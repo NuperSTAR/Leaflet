@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Leaflet Map Example</title>
+  <!-- Link to Leaflet CSS file -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <!-- Link to Leaflet JavaScript file -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <style>
+    #map {
+      height: 70vh; /* 70% of the viewport height */
+      width: 100%; /* 100% of the available width */
+      border: 1px solid gray;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script>
+    // Initialize the map
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    // Add the tile layers
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png?appid=1f66dd79358380ec43a3317593f2c586', {
+      maxZoom: 19,
+      attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+      apiKey: '1f66dd79358380ec43a3317593f2c586'
+    }).addTo(map);
+
+    L.tileLayer('http://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+  </script>
+</body>
+</html>
